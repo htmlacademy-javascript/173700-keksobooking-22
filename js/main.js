@@ -2,7 +2,7 @@
 
 const getRandomIntegerNumber = (firstNumber, lastNumber) => {
   if (firstNumber >= 0, lastNumber >= 0) {
-    if (lastNumber >= firstNumber) {
+    if (firstNumber <= lastNumber) {
       return Math.round(Math.random() * (lastNumber - firstNumber) + firstNumber);
     }
     return Math.round(Math.random() * (firstNumber - lastNumber) + lastNumber);
@@ -12,7 +12,7 @@ const getRandomIntegerNumber = (firstNumber, lastNumber) => {
 const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
   let totalNumber;
   if (firstNumber >= 0, lastNumber >= 0) {
-    if (lastNumber >= firstNumber) {
+    if (firstNumber <= lastNumber) {
       totalNumber = Math.random() * (lastNumber - firstNumber) + firstNumber;
     }
     totalNumber = Math.random() * (firstNumber - lastNumber) + lastNumber;
