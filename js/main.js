@@ -10,6 +10,8 @@ const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
       max = firstNumber;
     }
     totalNumber = Math.random() * (max - min) + min;
+  } else {
+    console.log("Одно или оба числа являются отрицательными.");
   }
   return +(totalNumber.toFixed(decimalPlaces));
 };
