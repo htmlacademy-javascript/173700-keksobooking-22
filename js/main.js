@@ -1,22 +1,21 @@
 // исходная версия Math.random() * (lastNumber - firstNumber) + firstNumber (с изменёнными переменными) взята с https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
-// const getRandomIntegerNumber
-(firstNumber, lastNumber) => {
-  if (firstNumber >= 0, lastNumber >= 0) {
-    if (firstNumber <= lastNumber) {
-      return Math.round(Math.random() * (lastNumber - firstNumber) + firstNumber);
-    }
-    return Math.round(Math.random() * (firstNumber - lastNumber) + lastNumber);
-  }
-};
 
-// const getRandomDecimalNumber
-(firstNumber, lastNumber, decimalPlaces) => {
+const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
   let totalNumber;
   if (firstNumber >= 0, lastNumber >= 0) {
+    let min = firstNumber;
+    let max = lastNumber;
     if (firstNumber <= lastNumber) {
-      totalNumber = Math.random() * (lastNumber - firstNumber) + firstNumber;
+      min = lastNumber;
+      max = firstNumber;
     }
-    totalNumber = Math.random() * (firstNumber - lastNumber) + lastNumber;
+    totalNumber = Math.random() * (max - min) + min;
   }
   return +(totalNumber.toFixed(decimalPlaces));
 };
+
+const getRandomIntegerNumber = (firstNumber, lastNumber) => {
+    return Math.round(getRandomDecimalNumber(firstNumber, lastNumber, 0));
+};
+
+console.log(getRandomIntegerNumber(2, 5));
