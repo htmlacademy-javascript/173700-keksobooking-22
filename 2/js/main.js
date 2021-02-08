@@ -2,7 +2,7 @@
 
 const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
   let totalNumber;
-  if (firstNumber >= 0, lastNumber >= 0) {
+  if (firstNumber >= 0 && lastNumber >= 0) {
     let min = firstNumber;
     let max = lastNumber;
     if (firstNumber <= lastNumber) {
