@@ -1,3 +1,5 @@
+"use strict";
+
 // исходная версия Math.random() * (lastNumber - firstNumber) + firstNumber (с изменёнными переменными) взята с https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
 const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
@@ -10,10 +12,8 @@ const getRandomDecimalNumber = (firstNumber, lastNumber, decimalPlaces) => {
       max = firstNumber;
     }
     totalNumber = Math.random() * (max - min) + min;
-  } else {
-    console.log("Одно или оба числа являются отрицательными.");
-  }
   return +(totalNumber.toFixed(decimalPlaces));
+  }
 };
 
 const getRandomIntegerNumber = (firstNumber, lastNumber) => {
