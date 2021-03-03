@@ -20,23 +20,24 @@ const getRandomIntegerNumber = (firstNumber, lastNumber) => {
     return Math.round(getRandomDecimalNumber(firstNumber, lastNumber, 0));
 };
 
-let advertLocationX = getRandomDecimalNumber(139.70000, 139.80000, 5);
-let advertLocationY = getRandomDecimalNumber(35.65000, 35.70000, 5);
-let advertType = ['palace', 'flat', 'house', 'bungalow'];
-let checkTime = ['12:00', '13:00', '14:00'];
-let advertFeatures = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-let advertPhotos = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
-let similarAdvertsCount = 3;
+const ADVERTTYPE = ['palace', 'flat', 'house', 'bungalow'];
+const CHECKTIME = ['12:00', '13:00', '14:00'];
+const ADVERTFEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+let similarAdvertsCount = 10;
+
+const getRandomValue = (value) => {
+  return getRandomIntegerNumber(0, value.length - 1);
+};
 
 const getRandomAdvertType = (advertType) => {
-  return advertType[getRandomIntegerNumber(0, advertType.length - 1)];
+  return advertType[getRandomValue(advertType)];
 };
 
 const getRandomAdvertFeatures = (initialArray) => {
-  let numberFeatures = getRandomIntegerNumber(0, initialArray.length - 1);
+  const numberFeatures = getRandomValue(initialArray);
   let finalArray = [];
   for (let i = 0; i <= numberFeatures; i++) {
-    finalArray.push(initialArray[getRandomIntegerNumber(0, initialArray.length - 1)]);
+    finalArray.push(initialArray[getRandomValue(initialArray)]);
   }
   finalArray.sort();
   let i = 0;
@@ -53,24 +54,24 @@ const getRandomAdvertFeatures = (initialArray) => {
 const createAdvert = () => {
   return {
     author: {
-      avatar: 'img/avatars/user' + ('0' + getRandomIntegerNumber(1, 8)) + '.png'
+      avatar: `img/avatars/user0${getRandomIntegerNumber(1, 8)}.png`
     },
     offer: {
       title: 'Сдается квартира в центре Токио',
-      address: advertLocationX + ', ' + advertLocationY,
+      address: `${getRandomDecimalNumber(139.70000, 139.80000, 5)}, ${getRandomDecimalNumber(35.65000, 35.70000, 5)}`,
       price: getRandomIntegerNumber(10000, 10000000),
-      type: getRandomAdvertType(advertType),
+      type: getRandomAdvertType(ADVERTTYPE),
       rooms: getRandomIntegerNumber(1, 200),
       guests: getRandomIntegerNumber(1, 200),
-      checkin: getRandomAdvertType(checkTime),
-      checkout: getRandomAdvertType(checkTime),
-      features: getRandomAdvertFeatures(advertFeatures),
+      checkin: getRandomAdvertType(CHECKTIME),
+      checkout: getRandomAdvertType(CHECKTIME),
+      features: getRandomAdvertFeatures(ADVERTFEATURES),
       description: 'Уютная квартира в центре Токио с видом на сквер, весной в котором можно любоваться цветущей сакурой, а осенью - багряными клёнами.',
-      photos: getRandomAdvertFeatures(advertPhotos)
+      photos: `http://o0.github.io/assets/images/tokyo/hotel${getRandomIntegerNumber(1, 3)}.jpg`
     },
     location: {
-      x: advertLocationX,
-      y: advertLocationY
+      x: getRandomDecimalNumber(139.70000, 139.80000, 5),
+      y: getRandomDecimalNumber(35.65000, 35.70000, 5)
     }
   };
 };
